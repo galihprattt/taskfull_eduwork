@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue Event Handling</title>
+</head>
+<body>
+  <div id="app">
+    <h1>Vue Event Handling</h1>
+    
+    <!-- 1. Event Listening -->
+    <div id="example-1">
+      <button v-on:click="counter += 1">Add 1</button>
+      <p>The button above has been clicked {{ counter }} times.</p>
+    </div>
+    
+    <!-- 2. Method Event Handling -->
+    <div id="example-2">
+      <button v-on:click="greet">Greet</button>
+    </div>
+    
+    <!-- 3. Inline Event Handling -->
+    <div id="example-3">
+      <button v-on:click="say('Hi!')">Say Hi</button><br>
+      <button v-on:click="say('What?')">Say What</button>
+    </div>
+    
+    <!-- 4. Event Modifiers -->
+    <form v-on:submit.prevent="warn('Form cannot be submitted yet.', $event)">
+      <button type="submit">Submit</button>
+    </form>
+    <div v-on:click.capture="outerClick">
+      <button v-on:click.stop="innerClick">Click me (stop propagation)</button>
+    </div>
+    
+    <!-- 5. Key Modifiers -->
+    <input v-on:keyup.enter="onEnter" placeholder="Press Enter to trigger event">
+    <br>
+    
+    <!-- 6. Mouse Button Modifiers -->
+    <button v-on:click.left="leftClick">Klik Kiri pada mouse</button><br>
+    <button v-on:click.middle="middleClick">Klik tengah pada mouse</button><br>
+    <button v-on:click.right="rightClick">Klik kanan pada mouse</button>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        counter: 0,
+        name: 'Vue.js',
+      },
+      methods: {
+        greet: function(event) {
+          alert('Hello ' + this.name + '!');
+          if (event) {
+            alert('You clicked a ' + event.target.tagName);
+          }
+        },
+        say: function(message) {
+          alert(message);
+        },
+        warn: function(message, event) {
+          if (event) {
+            event.preventDefault();
+          }
+          alert(message);
+        },
+        outerClick() {
+          alert('Outer element clicked!');
+        },
+        innerClick() {
+          alert('Inner element clicked!');
+        },
+        onEnter() {
+          alert('Enter key pressed!');
+        },
+        leftClick() {
+          alert('Left button clicked!');
+        },
+        middleClick() {
+          alert('Middle button clicked!');
+        },
+        rightClick() {
+          alert('Right button clicked!');
+        }
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+SELECT id_obat, nama_obat, harga, stok
+FROM obat
+WHERE stok > 0;
+
+
+SELECT nama_obat, harga
+FROM obat
+WHERE harga > 50000;
+
+
+
+SELECT nama_obat, harga FROM obat WHERE harga >= 50000;
+
+
+
+SELECT nama_obat, harga FROM obat WHERE harga <= 50000;
+
+
+ SELECT * FROM `obat`
+
+
+SELECT * FROM `obat` WHERE jenis_obat;
+
+
+SELECT * FROM detail_transaksi WHERE total_harga BETWEEN 10 AND 50;
+
+
+SELECT nama_obat, harga
+FROM obat
+WHERE harga < 50000;
+
+
+SELECT * FROM detail_transaksi WHERE total_harga > 100;
+
+
+SELECT * FROM detail_transaksi WHERE total_harga = 'nilai';

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Basic Komponen</title>
+
+</head>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.js"></script>
+<body>
+  <div id="app">
+    <div v-for="(person, index) in people" :key="index" class="card">
+      <p><strong>Nama:</strong> {{ person.name }}</p>
+      <p><strong>Umur:</strong> {{ person.umur }}</p>
+    </div>
+  </div>
+
+  <script>
+    const { createApp } = Vue;
+
+    createApp({
+      data() {
+        return {
+          people: [
+            { name: 'Pelita', umur: 21 },
+            { name: 'Nur', umur: 25 },
+            { name: 'Najmina', umur: 24 }
+          ]
+        };
+      }
+    }).mount('#app');
+  </script>
+</body>
+</html>
